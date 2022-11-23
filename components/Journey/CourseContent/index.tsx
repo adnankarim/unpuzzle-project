@@ -5,6 +5,9 @@ const CourseContent:FC = () => {
   return (
     <div className="">
         <CourseHeader />
+        <div className="flex">
+
+        </div>
     </div>
   )
 }
