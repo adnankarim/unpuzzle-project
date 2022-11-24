@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import CourseHeaderStar from "../../../assets/svg/CourseHeadeStar";
-import ToggleSwitch from "../../../../ToggleSwitch";
-import Button from "../../../../Button";
+import ToggleSwitch from "../../../ToggleSwitch";
+import Button from "../../../Button";
 import upLogo from "../../../assets/up-logo.png";
 import upLogo1 from "../../../assets/up-logo1.png";
 import share from "../../../assets/share.png";

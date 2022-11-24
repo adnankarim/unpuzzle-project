@@ -15,3 +15,16 @@ export interface buttonProps extends React.DOMAttributes<HTMLButtonElement> {
   bgColor: string;
   textSize?: string;
 }
+
+export interface tabProps {
+  tabName: string;
+  activeTab: number;
+  tabValue: number;
+  setActiveTab: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export interface tabPanelProps {
+  activeTab: number;
+  panelValue: number;
+  children: ReactNode;
+}

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { buttonProps } from "./types/types";
+import { buttonProps } from "../types/types";
 
 const Button: FC<buttonProps> = ({
   className = "",
@@ -14,8 +14,8 @@ const Button: FC<buttonProps> = ({
 }) => {
   return (
     <button
-      className={`${className}
-   ${px} ${py} ${bgColor} ${rounded} ${textColor} ${textSize}`}
+      className={`${className} 
+   ${px} ${py} ${bgColor} ${rounded} ${textColor} ${textSize} ${rounded}`}
       onClick={onClick}
     >
       {children}

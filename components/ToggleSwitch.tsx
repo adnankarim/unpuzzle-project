@@ -1,12 +1,11 @@
 import { FC } from "react";
-import { toggleSwitchProps } from "./types/types";
+import { toggleSwitchProps } from "../types/types";
 
 const ToggleSwitch: FC<toggleSwitchProps> = ({ selected, setSelected }) => {
   return (
     <div
-      className={`w-[60px] h-[24px]  rounded-[17px] px-1  relative flex items-center 
-       duration-500 transition-all 
-       cursor-pointer  ${
+      className={`w-[60px] h-[24px] rounded-[17px] px-1 relative flex items-center 
+       duration-500 transition-all cursor-pointer  ${
          selected ? "bg-[#36CC7B] justify-start" : "bg-[#BCBDBD] justify-end"
        }`}
       onClick={() => setSelected((selected) => !selected)}
