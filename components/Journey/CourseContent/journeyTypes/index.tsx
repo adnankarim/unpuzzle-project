@@ -21,7 +21,7 @@ export interface puzzlePiecesDataProps
   puzzlePieceType: string;
 }
 
-export interface confustionsDataProps
+export interface confusionsDataProps
   extends Omit<
     puzzlePieceProps,
     "children" | "contentType" | "puzzlePieceColor"
@@ -29,3 +29,4 @@ export interface confustionsDataProps
   solvedStatus: string;
   date: string;
 }
+

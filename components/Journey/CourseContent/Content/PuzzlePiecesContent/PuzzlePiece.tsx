@@ -11,8 +11,8 @@ const PuzzlePiece: FC<puzzlePieceProps> = ({
 }) => {
   return (
     <div
-      className="flex items-start p-[10px] gap-x-5 cursor-pointer border-2 border-black/0
-     hover:border-2 hover:border-[#1CABF2] hover:bg-[#F9F9F9]"
+      className="flex items-start p-[10px] gap-x-5 cursor-pointer border-2 border-black/0 
+      rounded-[5px] hover:border-2 hover:border-[#1CABF2] hover:bg-[#F9F9F9]"
     >
       <PuzzlePieceSvg color={puzzlePieceColor} />
       <div className="flex flex-col items-start gap-y-[10px]">

@@ -3,6 +3,7 @@ import Tab from "../../../Tab";
 import TabPanel from "../../../TabPanel";
 import PuzzlePiecesContent from "./PuzzlePiecesContent";
 import ConfusionsContent from "./ConfusionsContent";
+import AllContent from "./AllContent";
 import { tabsData } from "../Data";
 
 const ContentTabs: FC = () => {
@@ -26,7 +27,7 @@ const ContentTabs: FC = () => {
       </div>
       <div className="flex flex-col gap-y-[18px] overflow-auto">
         <TabPanel panelValue={1} activeTab={activeTab}>
-          Items1
+          <AllContent />
         </TabPanel>
         <TabPanel panelValue={2} activeTab={activeTab}>
           <PuzzlePiecesContent />

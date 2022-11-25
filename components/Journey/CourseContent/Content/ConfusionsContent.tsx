@@ -1,11 +1,11 @@
 import { FC } from "react";
 import PuzzlePiece from "./PuzzlePiecesContent/PuzzlePiece";
-import { confustionsData } from "../Data";
+import { confusionsData } from "../Data";
 
 const ConfusionsContent: FC = () => {
   return (
     <>
-      {confustionsData.map((confusion, index) => {
+      {confusionsData.map((confusion, index) => {
         return (
           <PuzzlePiece
             puzzlePieceColor="text-[#1CABF2]"

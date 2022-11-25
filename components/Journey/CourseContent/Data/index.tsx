@@ -1,7 +1,7 @@
 import {
   tabDataProps,
   puzzlePiecesDataProps,
-  confustionsDataProps,
+  confusionsDataProps,
 } from "../journeyTypes";
 
 export const tabsData: tabDataProps[] = [
@@ -53,7 +53,7 @@ export const puzzlePiecesData: puzzlePiecesDataProps[] = [
   },
 ];
 
-export const confustionsData: confustionsDataProps[] = [
+export const confusionsData: confusionsDataProps[] = [
   {
     title: "Check this alternate way to solve it in this pdf.",
     time: "2:30",
@@ -101,5 +101,73 @@ export const confustionsData: confustionsDataProps[] = [
     time: "2:30",
     solvedStatus: "Unsolved",
     date: "02/24/22",
+  },
+];
+
+export const allTabData = [
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    solvedStatus: "Unsolved",
+    date: "02/24/22",
+    contentType: "confusions",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    puzzlePieceType: "video",
+    contentType: "puzzle piece",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    solvedStatus: "Unsolved",
+    date: "02/24/22",
+    contentType: "confusions",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    puzzlePieceType: "video",
+    contentType: "puzzle piece",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    solvedStatus: "Unsolved",
+    date: "02/24/22",
+    contentType: "confusions",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    puzzlePieceType: "video",
+    contentType: "puzzle piece",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    solvedStatus: "Unsolved",
+    date: "02/24/22",
+    contentType: "confusions",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    puzzlePieceType: "video",
+    contentType: "puzzle piece",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    solvedStatus: "Unsolved",
+    date: "02/24/22",
+    contentType: "confusions",
+  },
+  {
+    title: "Check this alternate way to solve it in this pdf.",
+    time: "2:30",
+    puzzlePieceType: "video",
+    contentType: "puzzle piece",
   },
 ];
