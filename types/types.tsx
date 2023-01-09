@@ -28,3 +28,15 @@ export interface tabPanelProps {
   panelValue: number;
   children: ReactNode;
 }
+
+export interface sectionProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export interface playerProps {
+  url: string;
+  showAnnotaion?: boolean;
+  showPuzzlePieces?: boolean;
+  play?: boolean; //for videoplayer
+}

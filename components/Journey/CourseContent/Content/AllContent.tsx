@@ -1,10 +1,13 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { allTabData } from "../Data";
 import PuzzlePiece from "./PuzzlePiecesContent/PuzzlePiece";
-import videoIcon from "../../../assets/svg/videoIcon";
-import imageIcon from "../../../assets/svg/imageIcon";
+import VideoIcon from "../../../assets/svg/VideoIcon";
+import ImageIcon from "../../../assets/svg/ImageIcon";
+import { ContentContext } from "../../journeyContexts/ContentContext";
 
 const AllContent: FC = () => {
+  let { currentPieceLoaded } = useContext(ContentContext);
+
   return (
     <>
       {allTabData.map((puzzlePiece, index) => {
@@ -19,20 +22,47 @@ const AllContent: FC = () => {
             title={puzzlePiece.title}
             time={puzzlePiece.time}
             contentType={puzzlePiece.contentType}
+            id={puzzlePiece.id}
           >
             {puzzlePiece.contentType == "puzzle piece" ? (
               <div className="flex gap-x-[5px] justify-center items-center">
                 {puzzlePiece.puzzlePieceType == "video" ? (
                   <>
-                    {videoIcon}
-                    <p className="text-black/60 text-sm leading-[14px]">
+                    <VideoIcon
+                      color={`${
+                        currentPieceLoaded == puzzlePiece.id
+                          ? "text-white"
+                          : "text-black"
+                      }`}
+                    />
+                    <p
+                      className={` text-sm leading-[14px]
+                  ${
+                    currentPieceLoaded == puzzlePiece.id
+                      ? "text-white/60"
+                      : "text-black/60"
+                  }`}
+                    >
                       Video Puzzle Piece
                     </p>
                   </>
                 ) : (
                   <>
-                    {imageIcon}
-                    <p className="text-black/60 text-sm leading-[14px]">
+                    <ImageIcon
+                      color={`${
+                        currentPieceLoaded == puzzlePiece.id
+                          ? "text-white"
+                          : "text-black"
+                      }`}
+                    />
+                    <p
+                      className={` text-sm leading-[14px]
+                  ${
+                    currentPieceLoaded == puzzlePiece.id
+                      ? "text-white/60"
+                      : "text-black/60"
+                  }`}
+                    >
                       Image Puzzle Piece
                     </p>
                   </>
@@ -40,10 +70,24 @@ const AllContent: FC = () => {
               </div>
             ) : (
               <>
-                <p className="text-black/60 font-bold text-sm leading-[14px]">
+                <p
+                  className={` text-sm font-bold leading-[14px]
+                  ${
+                    currentPieceLoaded == puzzlePiece.id
+                      ? "text-white/60"
+                      : "text-black/60"
+                  }`}
+                >
                   {puzzlePiece.solvedStatus}
                 </p>
-                <p className="text-black/60  text-sm leading-[14px]">
+                <p
+                  className={` text-sm  leading-[14px]
+                  ${
+                    currentPieceLoaded == puzzlePiece.id
+                      ? "text-white/60"
+                      : "text-black/60"
+                  }`}
+                >
                   Posted on {puzzlePiece.date}
                 </p>
               </>
