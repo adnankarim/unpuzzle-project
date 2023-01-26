@@ -83,7 +83,7 @@ export interface PuzzleTimeStampProps extends puzzlePieceAnnotationProps {
 }
 
 export interface PuzzlePieceIconPanel {
-  Icon: ComponentType<{ color?: string }>;
+  Icon: ComponentType<{ color: string }>;
   puzzlePieceType: string;
   type: string;
   isActive: boolean;

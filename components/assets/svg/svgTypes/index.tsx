@@ -1,3 +1,3 @@
 export interface puzzlePieceSvgProps {
-  color?: string;
+  color: string;
 }

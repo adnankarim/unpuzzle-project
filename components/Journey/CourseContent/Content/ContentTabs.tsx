@@ -4,6 +4,7 @@ import TabPanel from "../../../TabPanel";
 import PuzzlePiecesContent from "./PuzzlePiecesContent";
 import ConfusionsContent from "./ConfusionsContent";
 import AllContent from "./AllContent";
+import AddNewPuzzlePiece from "./AddNewPuzzlePiece";
 import { tabsData } from "../Data";
 
 const ContentTabs: FC = () => {
@@ -30,7 +31,8 @@ const ContentTabs: FC = () => {
           <AllContent />
         </TabPanel>
         <TabPanel panelValue={2} activeTab={activeTab}>
-          <PuzzlePiecesContent />
+          {/* <PuzzlePiecesContent /> */}
+          <AddNewPuzzlePiece />
         </TabPanel>
         <TabPanel panelValue={3} activeTab={activeTab}>
           <ConfusionsContent />

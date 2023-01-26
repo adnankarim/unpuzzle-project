@@ -11,12 +11,14 @@ const Button: FC<buttonProps> = ({
   bgColor,
   textSize = "text-[18px]",
   onClick,
+  disabled = false,
 }) => {
   return (
     <button
       className={`${className} 
    ${px} ${py} ${bgColor} ${rounded} ${textColor} ${textSize} ${rounded}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
