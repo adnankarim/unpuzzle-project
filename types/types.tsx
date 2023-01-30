@@ -64,3 +64,20 @@ export interface dissmissibleContentProps {
   className?: string;
   buttonLeftMargin?: string;
 }
+
+export interface dropZoneProps {
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
+  validRegexString: string;
+}
+
+export interface titleInputProps {
+  placeholder: string;
+  textValue: string;
+  setTextValue: React.Dispatch<React.SetStateAction<string>>;
+  className?: string;
+}
+
+export interface filePreviewProps {
+  file: File | null;
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
+}

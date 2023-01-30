@@ -1,10 +1,12 @@
 import React, { FC, useState } from "react";
-import Button from "../../../../Button";
+import AddAnnotationButton from "./AddAnnotationButton";
 import Dropzone from "../../../../Dropzone";
 import FilePreview from "../../../../FilePreview";
+import TitleInput from "../../../../TitleInput";
 
 const VideoAnnotationContent: FC = () => {
   const [file, setFile] = useState<File | null>(null);
+  const [textValue, setTextValue] = useState<string>("");
 
   console.log(file);
   console.log(Boolean(file));
@@ -12,12 +14,11 @@ const VideoAnnotationContent: FC = () => {
   return (
     <div className="flex flex-col items-center gap-y-[10px]">
       {/* title for video annotation */}
-      <input
-        type="text"
-        placeholder="Enter the title of the video annotations..."
-        className="w-full border-[0.5px] border-black/60 rounded-[5px] py-[15px]
-        px-[10px] text-base text-black/50"
-      ></input>
+      <TitleInput
+        placeholder="Enter the title of the image annotations..."
+        textValue={textValue}
+        setTextValue={setTextValue}
+      />
       {/* DropZone for adding video */}
       {!file ? (
         <Dropzone setFile={setFile} validRegexString="video//*" />
@@ -26,14 +27,7 @@ const VideoAnnotationContent: FC = () => {
         <FilePreview file={file} setFile={setFile} />
       )}
 
-      <Button
-        bgColor={file ? "bg-[#1CABF2]" : "bg-black/50"}
-        textColor="text-white"
-        className="text-base"
-        disabled={!Boolean(file)}
-      >
-        Add Annotation @02:30
-      </Button>
+      <AddAnnotationButton active={Boolean(file)} />
     </div>
   );
 };

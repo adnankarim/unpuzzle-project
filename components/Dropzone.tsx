@@ -1,11 +1,10 @@
-import React, { FC, useRef } from "react";
-
-interface dropZoneProps {
-  setFile: React.Dispatch<React.SetStateAction<File | null>>;
-  validRegexString: string;
-}
+import React, { FC, useState, useRef } from "react";
+import { dropZoneProps } from "../types/types";
 
 const Dropzone: FC<dropZoneProps> = ({ setFile, validRegexString }) => {
+  const [dragging, setDragging] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+
   let fileRef = useRef<HTMLInputElement>(null);
 
   //dropzone click handler that triggers input file change handler
@@ -22,6 +21,10 @@ const Dropzone: FC<dropZoneProps> = ({ setFile, validRegexString }) => {
       console.log(regex.test(e.target.files[0].type));
       if (regex.test(e.target.files[0].type)) {
         setFile(e.target.files[0]);
+        dragging && setDragging(false);
+        error && setError(false);
+      } else {
+        setError(true);
       }
     }
   };
@@ -38,7 +41,13 @@ const Dropzone: FC<dropZoneProps> = ({ setFile, validRegexString }) => {
       console.log(regex.test(file.type));
       if (regex.test(file.type)) {
         setFile(file);
+        dragging && setDragging(false);
+        error && setError(false);
+      } else {
+        !error && setError(true);
       }
+    } else {
+      !error && setError(true);
     }
   };
 
@@ -47,7 +56,16 @@ const Dropzone: FC<dropZoneProps> = ({ setFile, validRegexString }) => {
       onClick={dropzoneClickHandler}
       onDrop={onDropHandler}
       onDragOver={(e) => e.preventDefault()}
-      className="w-full h-[128px] flex flex-col gap-y-[10px] justify-center items-center cursor-pointer border-[1px] border-dashed border-black/60 rounded-[5px]"
+      onDragEnter={() => setDragging(true)}
+      onDragLeave={() => setDragging(false)}
+      className={`w-full h-[128px] flex flex-col gap-y-[10px] justify-center 
+      items-center cursor-pointer border-[1px] border-dashed ${
+        error
+          ? "border-[#FF0000]"
+          : dragging
+          ? "border-[#1CABF2]"
+          : "border-black/60"
+      } rounded-[5px]`}
     >
       <input onChange={fileChangeHandler} ref={fileRef} type="file" hidden />
       <svg
@@ -68,7 +86,17 @@ const Dropzone: FC<dropZoneProps> = ({ setFile, validRegexString }) => {
           fill-opacity="0.5"
         />
       </svg>
-      <p className="text-sm text-black/50">Choose a file or Drag it here</p>
+      <p
+        className={`text-sm text-black/50 ${
+          error
+            ? "text-[#FF0000]"
+            : dragging
+            ? "text-[#1CABF2]"
+            : "text-black/60"
+        }`}
+      >
+        Choose a file or Drag it here
+      </p>
     </div>
   );
 };

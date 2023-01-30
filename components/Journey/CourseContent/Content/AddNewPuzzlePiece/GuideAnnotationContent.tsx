@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { EditorState } from "draft-js";
 import { convertToHTML } from "draft-convert";
-import DOMPurify from "dompurify";
-import Button from "../../../../Button";
+import DOMPurify from "isomorphic-dompurify";
+import AddAnnotationButton from "./AddAnnotationButton";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -46,14 +46,7 @@ const GuideAnnotationContent: FC = () => {
         className="mt-1 p-1"
         dangerouslySetInnerHTML={createMarkup(convertedContent as string)}
       ></div>
-      <Button
-        bgColor={convertedContent ? "bg-[#1CABF2]" : "bg-black/50"}
-        textColor="text-white"
-        className="text-base"
-        disabled={!Boolean(convertedContent)}
-      >
-        Add Annotation @02:30
-      </Button>
+      <AddAnnotationButton active={Boolean(convertToHTML)} />
     </div>
   );
 };

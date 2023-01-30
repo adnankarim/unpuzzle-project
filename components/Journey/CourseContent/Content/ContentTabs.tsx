@@ -26,7 +26,7 @@ const ContentTabs: FC = () => {
           );
         })}
       </div>
-      <div className="flex flex-col gap-y-[18px] overflow-auto">
+      <div className="flex justify-start gap-y-[18px] overflow-auto scroll-smooth snap-start">
         <TabPanel panelValue={1} activeTab={activeTab}>
           <AllContent />
         </TabPanel>

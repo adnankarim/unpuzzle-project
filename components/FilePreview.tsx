@@ -1,9 +1,5 @@
 import React, { FC } from "react";
-
-interface filePreviewProps {
-  file: File | null;
-  setFile: React.Dispatch<React.SetStateAction<File | null>>;
-}
+import { filePreviewProps } from "../types/types";
 
 const FilePreview: FC<filePreviewProps> = ({ file, setFile }) => {
   return (

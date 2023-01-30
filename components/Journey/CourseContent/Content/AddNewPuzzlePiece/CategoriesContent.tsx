@@ -2,6 +2,7 @@ import React, { useState, FC } from "react";
 import Tab from "../../../../Tab";
 import TabPanel from "../../../../TabPanel";
 import PuzzlePieceSvg from "../../../../assets/svg/PuzzlePieceSvg";
+import AddConfusionContent from "./AddConfusionContent";
 import VideoAnnotationContent from "./VideoAnnotationContent";
 import AudioAnnotationContent from "./AudioAnnotationContent";
 import ImageAnnotationContent from "./ImageAnnotationContent";
@@ -50,7 +51,7 @@ const CategoriesContent: FC = () => {
         </div>
         {/* Tab Panel for Confusion*/}
         <TabPanel activeTab={currentTab} panelValue={1}>
-          Please add New Confusion
+          <AddConfusionContent />
         </TabPanel>
         {/* Tab Panel for Annotations */}
         <TabPanel activeTab={currentTab} panelValue={2}>
@@ -125,19 +126,24 @@ const CategoriesContent: FC = () => {
           </div>
         </TabPanel>
       </div>
-      {/* Tab Panels for showing content for adding new annotations on clicking above tabs */}
-      {/* Video Tab Panel */}
-      <TabPanel activeTab={annotationCurrentTab} panelValue={1}>
-        <VideoAnnotationContent />
-      </TabPanel>
-      <TabPanel activeTab={annotationCurrentTab} panelValue={2}>
-        <AudioAnnotationContent />
-      </TabPanel>
-      <TabPanel activeTab={annotationCurrentTab} panelValue={3}>
-        <ImageAnnotationContent />
-      </TabPanel>
-      <TabPanel activeTab={annotationCurrentTab} panelValue={4}>
-        <GuideAnnotationContent />
+      {/* Tab Panels for showing content for adding new annotations on clicking annotation tabs */}
+      <TabPanel activeTab={currentTab} panelValue={2}>
+        {/* Video Tab Panel */}
+        <TabPanel activeTab={annotationCurrentTab} panelValue={1}>
+          <VideoAnnotationContent />
+        </TabPanel>
+        {/* Audio Tab Panel */}
+        <TabPanel activeTab={annotationCurrentTab} panelValue={2}>
+          <AudioAnnotationContent />
+        </TabPanel>
+        {/* Image Tab Panel */}
+        <TabPanel activeTab={annotationCurrentTab} panelValue={3}>
+          <ImageAnnotationContent />
+        </TabPanel>
+        {/* Guide Tab Panel */}
+        <TabPanel activeTab={annotationCurrentTab} panelValue={4}>
+          <GuideAnnotationContent />
+        </TabPanel>
       </TabPanel>
     </>
   );

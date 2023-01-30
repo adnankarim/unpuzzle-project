@@ -1,7 +1,8 @@
 import React, { useState, FC, useEffect } from "react";
 import Dropzone from "../../../../Dropzone";
 import FilePreview from "../../../../FilePreview";
-import Button from "../../../../Button";
+import AddAnnotationButton from "./AddAnnotationButton";
+import TitleInput from "../../../../TitleInput";
 
 const AudioAnnotationContent: FC = () => {
   const [audioRecorder, setAudioRecorder] = useState<MediaRecorder | null>(
@@ -9,7 +10,11 @@ const AudioAnnotationContent: FC = () => {
   );
   const [file, setFile] = useState<File | null>(null);
   const [isAudioRecording, setIsAudioRecording] = useState<boolean>(false);
+  const [textValue, setTextValue] = useState<string>("");
   console.log(audioRecorder);
+
+  //Function for created recorder when user first time click start audio
+  //then it will show popup to take microphone permissions & then create recorder
   const createRecorder = async () => {
     let stream = await navigator.mediaDevices.getUserMedia({
       audio: true,
@@ -70,17 +75,21 @@ const AudioAnnotationContent: FC = () => {
       //onstop we will create file from chunks array in our case chunks array will contain only one blob.
       audioRecorder.onstop = (e) => {
         console.log("inside recorder onstop");
+
         setIsAudioRecording(false);
         console.log(chunks);
+
         let blob = new Blob(chunks);
         console.log(blob);
         let url = URL.createObjectURL(blob);
         console.log(url);
+
         const myFile = new File(chunks, `recording.${audioRecorder.mimeType}`, {
           type: audioRecorder.mimeType,
         });
         setFile(myFile);
         console.log(myFile);
+
         let audio = document.getElementById("audio") as HTMLAudioElement;
         if (audio) {
           audio.src = url;
@@ -97,12 +106,11 @@ const AudioAnnotationContent: FC = () => {
   return (
     <div className="flex flex-col items-center gap-y-[10px]">
       {/* title for audio annotation */}
-      <input
-        type="text"
-        placeholder="Enter the title of the audio annotations..."
-        className="w-full border-[0.5px] border-black/60 rounded-[5px] py-[15px] 
-        px-[10px] text-base text-black/50"
-      ></input>
+      <TitleInput
+        placeholder="Enter the title of the image annotations..."
+        textValue={textValue}
+        setTextValue={setTextValue}
+      />
       {!file ? (
         <>
           {/* Recorder for recording audio */}
@@ -145,14 +153,7 @@ const AudioAnnotationContent: FC = () => {
       )}
       {/* audio tag for playing the recorded audio */}
       <audio id="audio"></audio>
-      <Button
-        bgColor={file ? "bg-[#1CABF2]" : "bg-black/50"}
-        textColor="text-white"
-        className="text-base"
-        disabled={!Boolean(file)}
-      >
-        Add Annotation @02:30
-      </Button>
+      <AddAnnotationButton active={Boolean(file)} />
     </div>
   );
 };
