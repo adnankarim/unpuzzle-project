@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import  { FC, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { EditorState } from "draft-js";
 import { convertToHTML } from "draft-convert";

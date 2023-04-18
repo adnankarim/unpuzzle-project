@@ -1,5 +1,7 @@
-import React, { FC } from "react";
+import  { FC, useContext } from "react";
 import Button from "../../../../Button";
+import { ContentContext } from "../../../journeyContexts/ContentContextProvider";
+import { getTime } from "../../../../helperFunctions";
 
 interface addAnnotationButtonProps {
   active: boolean;
@@ -10,6 +12,8 @@ const AddAnnotationButton: FC<addAnnotationButtonProps> = ({
   active,
   onClick,
 }) => {
+  const { currentTime, setCurrentTime } = useContext(ContentContext);
+
   return (
     <Button
       bgColor={active ? "bg-[#1CABF2]" : "bg-black/50"}
@@ -18,7 +22,7 @@ const AddAnnotationButton: FC<addAnnotationButtonProps> = ({
       disabled={!active}
       onClick={onClick}
     >
-      Add Annotation @02:30
+      {`Add Annotation @${getTime(currentTime)}`}
     </Button>
   );
 };

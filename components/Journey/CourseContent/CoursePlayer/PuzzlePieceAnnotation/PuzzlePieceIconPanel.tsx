@@ -1,4 +1,4 @@
-import { ComponentType, FC } from "react";
+import {  FC } from "react";
 import { PuzzlePieceIconPanel } from "../../../journeyTypes";
 
 const PuzzlePieceIconPanel: FC<PuzzlePieceIconPanel> = ({

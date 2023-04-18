@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import ReactionButton from "./ReactionButton";
 import Image from "next/image";
 import upVote from "../../assets/upvote.png";

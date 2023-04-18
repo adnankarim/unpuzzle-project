@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback, useRef } from "react";
+import { FC, useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import PuzzlePieceSvg from "../../assets/svg/PuzzlePieceSvg";
 import Speaker from "./Speaker";
@@ -328,7 +328,7 @@ const YoutubePlayer: FC<youtubePlayerProps> = ({
           </div>
         )}
       </div>
-      {showAnnotaion && <PuzzlePieceAnnotation currentTime={currentTime} />}
+      {showAnnotaion && <PuzzlePieceAnnotation />}
     </div>
   );
 };

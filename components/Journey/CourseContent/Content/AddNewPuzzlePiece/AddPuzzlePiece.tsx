@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import PuzzlePieceDuration from "./PuzzlePieceDuration";
 import CategoriesContent from "./CategoriesContent";
 

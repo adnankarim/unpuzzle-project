@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import VideoPlayer from "./Journey/CourseContent/CoursePlayer/VideoPlayer";
 import YoutubePlayer from "./Confusions/ConfusionPlayer/YoutubePlayer";
 import { playerProps } from "../types/types";

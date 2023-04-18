@@ -1,4 +1,4 @@
-import { FC, useState, createContext, ReactNode } from "react";
+import { FC, useState, createContext } from "react";
 import {
   ContentContextProps,
   ContentContextProviderProps,
@@ -12,10 +12,16 @@ const ContentContextProvider: FC<ContentContextProviderProps> = ({
   let [currentPieceLoaded, setCurrentPieceLoaded] = useState<number | null>(
     null
   );
+  let [currentTime, setCurrentTime] = useState<number>(0);
 
   return (
     <ContentContext.Provider
-      value={{ currentPieceLoaded, setCurrentPieceLoaded }}
+      value={{
+        currentPieceLoaded,
+        setCurrentPieceLoaded,
+        currentTime,
+        setCurrentTime,
+      }}
     >
       {children}
     </ContentContext.Provider>

@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react";
+import  { useState, FC } from "react";
 import { dissmissibleContentProps } from "../types/types";
 
 const DissmissibleContent: FC<dissmissibleContentProps> = ({

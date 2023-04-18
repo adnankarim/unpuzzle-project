@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import  { FC, useState } from "react";
 import TitleInput from "../../../../TitleInput";
 import AddAnnotationButton from "./AddAnnotationButton";
 

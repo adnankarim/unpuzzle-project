@@ -1,57 +1,51 @@
-import { FC } from "react";
+import  { FC, useContext } from "react";
 import Image from "next/image";
-import { puzzlePiecesData } from "../../Data";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { allTabData } from "../../Data";
 import currentPlayIcon from "../../../../assets/currentPlayIcon.png";
-import { puzzlePiecePreviewProps } from "../../../journeyTypes";
+import { getTime } from "../../../../helperFunctions";
+import { ContentContext } from "../../../journeyContexts/ContentContextProvider";
 
-let getTime = (d: number) => {
-  let h: number = Math.floor(d / 3600);
-  let m: number = Math.floor((d % 3600) / 60);
-  let s: number = Math.floor((d % 3600) % 60);
-  // console.log(h, m, s);
-  let hDisplay: string = h > 0 ? h + ":" : "";
-  let mDisplay: string = m > 0 ? m + ":" : "00:";
-  let sDisplay: string = s > 0 ? (s < 10 ? "0" + s : s + "") : "00";
-  return hDisplay + mDisplay + sDisplay;
-};
+const PuzzlePiecePreview: FC = () => {
+  const { currentPieceLoaded } = useContext(ContentContext);
 
-let newpuzzlePiecesData = [...puzzlePiecesData, ...puzzlePiecesData];
+  let currentPuzzlePiece = allTabData.find(
+    ({ id }) => id == currentPieceLoaded
+  );
 
-const PuzzlePiecePreview: FC<puzzlePiecePreviewProps> = ({ index }) => {
-  console.log(index);
-  let currentPuzzlePiece = index
-    ? newpuzzlePiecesData.sort((a, b) => {
-        return Math.floor(a.time) - Math.floor(b.time);
-      })[index]
-    : null;
-
+  const router = useRouter();
+  console.log(router.asPath);
+  console.log(router.query);
   return (
-    <div className="w-[511px] flex justify-center gap-x-[10px]">
-      {index ? (
-        <>
-          <div className="flex flex-col items-start gap-y-[5px] w-[350px]">
-            <p className="text-[16px] text-black/50">{`Unpuzzle ${getTime(
-              currentPuzzlePiece?.time as number
-            )}`}</p>
-            <p className="text-black/80 text-[16px] leading-[19.2px] ">
-              {currentPuzzlePiece?.title as string}
-            </p>
-          </div>
-          <div
-            className="w-[151px] h-[91px] flex justify-center items-center 
+    <div>
+      {currentPuzzlePiece ? (
+        <Link href={`${router.asPath}/confusions/${currentPieceLoaded}`}>
+          <div className="w-full flex justify-center gap-x-[10px]">
+            <div className="flex flex-col items-start gap-y-[5px] w-[350px]">
+              <p className="text-[16px] text-black/50">{`Unpuzzle ${getTime(
+                currentPuzzlePiece?.time as number
+              )}`}</p>
+              <p className="text-black/80 text-[16px] leading-[19.2px]">
+                {currentPuzzlePiece?.title as string}
+              </p>
+            </div>
+            <div
+              className="w-[151px] h-[91px] flex justify-center items-center 
       bg-[#C4C4C4] 
       rounded-[5px]"
-          >
-            <Image
-              src={currentPlayIcon.src}
-              width={45}
-              height={45}
-              alt="Play Icon"
-            />
+            >
+              <Image
+                src={currentPlayIcon.src}
+                width={45}
+                height={45}
+                alt="Play Icon"
+              />
+            </div>
           </div>
-        </>
+        </Link>
       ) : (
-        "Please Select Puzzle Piece"
+        <div>Please Add Annotation or Confusion</div>
       )}
     </div>
   );

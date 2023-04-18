@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import { puzzlePieceSvgProps } from "./svgTypes";
 
 const TabAudioIcon: FC<puzzlePieceSvgProps> = ({ color }) => {

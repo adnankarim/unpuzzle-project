@@ -35,6 +35,8 @@ export interface ContentContextProviderProps {
 export interface ContentContextProps {
   currentPieceLoaded: number | null;
   setCurrentPieceLoaded: React.Dispatch<React.SetStateAction<number | null>>;
+  currentTime: number;
+  setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface coursePlayerProps {
@@ -66,20 +68,18 @@ export interface videoPlayerProps {
   showPuzzlePieces?: boolean;
 }
 
-export interface puzzlePieceAnnotationProps {
-  currentTime: number;
+export interface puzzleTimeStampSliderProps {
+  data: Array<any>;
 }
 
-export interface puzzleTimeStampSliderProps
-  extends puzzlePieceAnnotationProps {}
-
-export interface PuzzleTimeStampProps extends puzzlePieceAnnotationProps {
+export interface PuzzleTimeStampProps {
   puzzlePieceType: string;
   time: number;
   slider: React.RefObject<Slider>;
   index: number;
   setCurrentIndex: React.Dispatch<React.SetStateAction<number | null>>;
   currentIndex: number | null;
+  id: number;
 }
 
 export interface PuzzlePieceIconPanel {
@@ -88,8 +88,4 @@ export interface PuzzlePieceIconPanel {
   type: string;
   isActive: boolean;
   isVisited: boolean;
-}
-
-export interface puzzlePiecePreviewProps {
-  index: number | null;
 }

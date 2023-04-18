@@ -1,4 +1,11 @@
-import { FC, useState, useRef, useEffect, useCallback } from "react";
+import {
+  FC,
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useContext,
+} from "react";
 import Speaker from "./Speaker";
 import Settings from "./Settings";
 import PuzzlePieceAnnotation from "./PuzzlePieceAnnotation";
@@ -10,17 +17,8 @@ import fullScreen from "../../../assets/fullScreen.png";
 import youtube from "../../../assets/youtube.png";
 import pauseIcon from "../../../assets/pauseIcon.png";
 import { videoPlayerProps } from "../../journeyTypes";
-
-let getTime = (d: number) => {
-  let h: number = Math.floor(d / 3600);
-  let m: number = Math.floor((d % 3600) / 60);
-  let s: number = Math.floor((d % 3600) % 60);
-  // console.log(h, m, s);
-  let hDisplay: string = h > 0 ? h + ":" : "";
-  let mDisplay: string = m > 0 ? m + ":" : "00:";
-  let sDisplay: string = s > 0 ? (s < 10 ? "0" + s : s + "") : "00";
-  return hDisplay + mDisplay + sDisplay;
-};
+import { ContentContext } from "../../journeyContexts/ContentContextProvider";
+import { getTime } from "@/components/helperFunctions";
 
 const VideoPlayer: FC<videoPlayerProps> = ({
   url,
@@ -29,8 +27,9 @@ const VideoPlayer: FC<videoPlayerProps> = ({
   showPuzzlePieces = true,
 }) => {
   let [playVideo, setPlayVideo] = useState<boolean>(play);
-  let [currentTime, setCurrentTime] = useState<number>(0);
   let [timeLineOver, setTimeLineOver] = useState<boolean>(false);
+
+  const { currentTime, setCurrentTime } = useContext(ContentContext);
 
   let video = useRef<HTMLVideoElement>(null);
   let videoContainer = useRef<HTMLDivElement>(null);
@@ -108,7 +107,7 @@ const VideoPlayer: FC<videoPlayerProps> = ({
     playVideo ? element?.play().catch((err) => {}) : element?.pause();
 
     return () => {
-      console.log("inside [playvide] useeffect cleanup");
+      console.log("inside [playvideo] useeffect cleanup");
     };
   }, [playVideo]);
 
@@ -250,7 +249,7 @@ const VideoPlayer: FC<videoPlayerProps> = ({
           </div>
         </div>
       </div>
-      {showAnnotaion && <PuzzlePieceAnnotation currentTime={currentTime} />}
+      {showAnnotaion && <PuzzlePieceAnnotation />}
     </div>
   );
 };

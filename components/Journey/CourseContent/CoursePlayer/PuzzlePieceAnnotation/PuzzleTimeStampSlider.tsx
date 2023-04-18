@@ -1,13 +1,10 @@
-import { FC, useState, useRef, useEffect } from "react";
-import { puzzlePiecesData } from "../../Data";
+import { FC, useState, useRef, useEffect, useContext } from "react";
 import PuzzleTimeStamp from "./PuzzleTimeStamp";
-import PuzzlePiecePreview from "./PuzzlePiecePreview";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { puzzleTimeStampSliderProps } from "../../../journeyTypes";
-
-let newpuzzlePiecesData = [...puzzlePiecesData, ...puzzlePiecesData];
+import { ContentContext } from "../../../journeyContexts/ContentContextProvider";
 
 const settings = {
   dots: false,
@@ -18,13 +15,14 @@ const settings = {
   beforeChange: (current: number, next: number) => console.log(current, next),
 };
 
-const PuzzleTimeStampSlider: FC<puzzleTimeStampSliderProps> = ({
-  currentTime,
-}) => {
+const PuzzleTimeStampSlider: FC<puzzleTimeStampSliderProps> = ({ data }) => {
   let [preview, setPreview] = useState<number>(1);
   let [slidesToShow, setSlidesToShow] = useState<number>(8);
   let [currentIndex, setCurrentIndex] = useState<number | null>(0);
 
+  const { currentTime } = useContext(ContentContext);
+
+  let newpuzzlePiecesData = [...data, ...data];
   const SliderRef = useRef<Slider>(null);
 
   // useEffect(() => {
@@ -37,7 +35,7 @@ const PuzzleTimeStampSlider: FC<puzzleTimeStampSliderProps> = ({
   useEffect(() => {
     console.log("inside preview useeffect");
     console.log(preview);
-    console.log(puzzlePiecesData);
+    console.log(data);
     SliderRef.current?.slickGoTo(slidesToShow * preview - slidesToShow);
   }, [preview]);
 
@@ -108,32 +106,30 @@ const PuzzleTimeStampSlider: FC<puzzleTimeStampSliderProps> = ({
 
   // console.log(preview);
   return (
-    <div className="w-full flex gap-x-[40px]">
-      <div className="w-[580px] border-2 bg-white pb-[10px] pt-[2px]">
-        <Slider {...settings} ref={SliderRef}>
-          {newpuzzlePiecesData
-            .sort((a, b) => {
-              return Math.floor(a.time) - Math.floor(b.time);
-            })
-            .map(({ puzzlePieceType, time }, index) => {
-              return (
-                <PuzzleTimeStamp
-                  key={index}
-                  puzzlePieceType={puzzlePieceType}
-                  time={time}
-                  currentTime={currentTime}
-                  slider={SliderRef}
-                  index={index}
-                  setCurrentIndex={setCurrentIndex}
-                  currentIndex={currentIndex}
-                />
-              );
-            })}
-        </Slider>
-      </div>
-      <PuzzlePiecePreview index={currentIndex} />
+    <div className="w-[580px] border-2 bg-white pb-[10px] pt-[2px]">
+      <Slider {...settings} ref={SliderRef}>
+        {newpuzzlePiecesData
+          .sort((a, b) => {
+            return Math.floor(a.time) - Math.floor(b.time);
+          })
+          .map(({ puzzlePieceType, time, id }, index) => {
+            return (
+              <PuzzleTimeStamp
+                key={index}
+                puzzlePieceType={puzzlePieceType}
+                time={time}
+                slider={SliderRef}
+                index={index}
+                setCurrentIndex={setCurrentIndex}
+                currentIndex={currentIndex}
+                id={id}
+              />
+            );
+          })}
+      </Slider>
     </div>
   );
 };
 
 export default PuzzleTimeStampSlider;
+  

@@ -1,10 +1,14 @@
-import React, { FC } from "react";
+import  { FC, useContext } from "react";
+import { AnnotationInfoContext } from "../ConfusionContexts/AnnotationInfoContextProvider";
+import { getTime } from "../../helperFunctions";
 
 const ConfusionDetails: FC = () => {
+  const { puzzlePiece } = useContext(AnnotationInfoContext);
+
   return (
     <div className="flex flex-col gap-y-5">
       <h1 className="text-black/75 text-[45px] font-bold leading-[58.5px]">
-        Confused at 02:45
+        Confused at {getTime(puzzlePiece.time)}
       </h1>
       <p className="text-black/75 text-[30px] font-bold leading-[39px]">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet eu,

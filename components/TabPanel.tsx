@@ -1,4 +1,4 @@
-import React, { FC, useRef, useEffect } from "react";
+import { FC, useRef, useEffect } from "react";
 import { tabPanelProps } from "../types/types";
 
 const TabPanel: FC<tabPanelProps> = ({ activeTab, panelValue, children }) => {

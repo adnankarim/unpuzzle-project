@@ -11,7 +11,7 @@ const CoursePlayer: FC<coursePlayerProps> = ({ url, thumbnail }) => {
       style={{
         backgroundImage: `url(${videoPlayed ? "" : thumbnail})`,
       }}
-      className="flex justify-center items-center w-[66.6%] min-h-[500px]   cursor-pointer bg-cover bg-center bg-no-repeat"
+      className="flex justify-center items-center w-[66.6%] height-[500px] cursor-pointer bg-cover bg-center bg-no-repeat"
     >
       {!videoPlayed && (
         <div onClick={() => setVideoPlayed(true)}>{PlayIcon}</div>

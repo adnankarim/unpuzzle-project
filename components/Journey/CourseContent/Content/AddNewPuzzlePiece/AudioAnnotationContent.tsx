@@ -1,4 +1,4 @@
-import React, { useState, FC, useEffect } from "react";
+import { useState, FC, useEffect } from "react";
 import Dropzone from "../../../../Dropzone";
 import FilePreview from "../../../../FilePreview";
 import AddAnnotationButton from "./AddAnnotationButton";
@@ -146,7 +146,7 @@ const AudioAnnotationContent: FC = () => {
             )}
           </div>
           {/* Audio Dropzone */}
-          <Dropzone setFile={setFile} validRegexString="audio//*" />
+          <Dropzone setFile={setFile} validRegexString="audio//*" icon />
         </>
       ) : (
         <FilePreview file={file} setFile={setFile} />

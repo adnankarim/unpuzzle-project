@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import PuzzlePiece from "./PuzzlePiecesContent/PuzzlePiece";
 import { confusionsData } from "../Data";
-import { ContentContext } from "../../journeyContexts/ContentContext";
+import { ContentContext } from "../../journeyContexts/ContentContextProvider";
 
 const ConfusionsContent: FC = () => {
   let { currentPieceLoaded } = useContext(ContentContext);

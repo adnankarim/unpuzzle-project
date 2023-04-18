@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import AddAnnotationButton from "./AddAnnotationButton";
 import Dropzone from "../../../../Dropzone";
 import FilePreview from "../../../../FilePreview";
@@ -21,7 +21,7 @@ const VideoAnnotationContent: FC = () => {
       />
       {/* DropZone for adding video */}
       {!file ? (
-        <Dropzone setFile={setFile} validRegexString="video//*" />
+        <Dropzone setFile={setFile} validRegexString="video//*" icon />
       ) : (
         // added file layout
         <FilePreview file={file} setFile={setFile} />

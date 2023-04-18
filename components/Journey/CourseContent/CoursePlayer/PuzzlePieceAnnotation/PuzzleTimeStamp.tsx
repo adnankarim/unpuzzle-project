@@ -1,35 +1,30 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useContext } from "react";
 import PuzzlePieceIconPanel from "./PuzzlePieceIconPanel";
 import VideoTimeStamp from "../../../../assets/svg/VideoTimeStamp";
 import ImageTimeStamp from "../../../../assets/svg/ImageTimeStamp";
 import AudioTimeStamp from "../../../../assets/svg/AudioTimeStamp";
 import ActivePointer from "../../../../assets/svg/ActivePointer";
-import Slider from "react-slick";
 import { PuzzleTimeStampProps } from "../../../journeyTypes";
-
-let getTime = (d: number) => {
-  let h: number = Math.floor(d / 3600);
-  let m: number = Math.floor((d % 3600) / 60);
-  let s: number = Math.floor((d % 3600) % 60);
-  let hDisplay: string = h > 0 ? h + ":" : "";
-  let mDisplay: string = m > 0 ? m + ":" : "00:";
-  let sDisplay: string = s > 0 ? (s < 10 ? "0" + s : s + "") : "00";
-  return hDisplay + mDisplay + sDisplay;
-};
+import { getTime } from "../../../../helperFunctions";
+import { ContentContext } from "../../../journeyContexts/ContentContextProvider";
 
 const PuzzleTimeStamp: FC<PuzzleTimeStampProps> = ({
   puzzlePieceType,
-  currentTime,
   time,
   slider,
   index,
   setCurrentIndex,
   currentIndex,
+  id,
 }) => {
   // Boolean(currentIndex == index);
-  let [isActive, setIsActive] = useState<boolean>(false);
+  // let [isActive, setIsActive] = useState<boolean>(false);
   let [isVisited, setIsVisited] = useState<boolean>(false);
 
+  const { currentPieceLoaded, setCurrentPieceLoaded, setCurrentTime } =
+    useContext(ContentContext);
+
+  let isActive = id == currentPieceLoaded;
   // console.log(currentTime);
 
   // useEffect(() => {
@@ -49,7 +44,13 @@ const PuzzleTimeStamp: FC<PuzzleTimeStampProps> = ({
   // }, [currentTime]);
 
   return (
-    <div className="flex flex-col items-center gap-y-[1px]">
+    <div
+      className="flex flex-col items-center gap-y-[1px]"
+      onClick={() => {
+        setCurrentPieceLoaded(id);
+        setCurrentTime(time);
+      }}
+    >
       <ActivePointer opacity={isActive ? "opacity-100" : "opacity-0"} />
       <div
         className={`flex flex-col justify-center items-center 

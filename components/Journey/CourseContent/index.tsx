@@ -2,7 +2,7 @@ import { FC } from "react";
 import CourseHeader from "./CourseHeader";
 import CoursePlayer from "./CoursePlayer";
 import Content from "./Content";
-import ContentContextProvider from "../journeyContexts/ContentContext";
+import ContentContextProvider from "../journeyContexts/ContentContextProvider";
 
 const CourseContent: FC = () => {
   return (

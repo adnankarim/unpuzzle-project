@@ -47,13 +47,6 @@ export const puzzlePiecesData: puzzlePiecesDataProps[] = [
     contentType: "puzzle piece",
   },
   {
-    id: 5,
-    title: "Check this alternate way to solve it in this pdf.",
-    time: 5,
-    puzzlePieceType: "image",
-    contentType: "puzzle piece",
-  },
-  {
     id: 6,
     title: "Check this alternate way to solve it in this pdf.",
     time: 3,

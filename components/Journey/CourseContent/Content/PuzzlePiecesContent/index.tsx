@@ -3,7 +3,7 @@ import PuzzlePiece from "./PuzzlePiece";
 import VideoIcon from "../../../../assets/svg/VideoIcon";
 import ImageIcon from "../../../../assets/svg/ImageIcon";
 import { puzzlePiecesData } from "../../Data";
-import { ContentContext } from "../../../journeyContexts/ContentContext";
+import { ContentContext } from "../../../journeyContexts/ContentContextProvider";
 
 const PuzzlePiecesContent: FC = () => {
   let { currentPieceLoaded } = useContext(ContentContext);

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import DissmissibleContent from "../../../../DissmissibleContent";
 import AddPuzzlePiece from "./AddPuzzlePiece";
 

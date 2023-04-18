@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import Answer from "./Answer";
 import { answersData } from "../ConfustionsData";
 

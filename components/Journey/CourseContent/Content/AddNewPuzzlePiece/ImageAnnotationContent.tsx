@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import AddAnnotationButton from "./AddAnnotationButton";
 import Dropzone from "../../../../Dropzone";
 import FilePreview from "../../../../FilePreview";
@@ -21,7 +21,7 @@ const ImageAnnotationContent: FC = () => {
       />
       {/* DropZone for adding image */}
       {!file ? (
-        <Dropzone setFile={setFile} validRegexString="image//*" />
+        <Dropzone setFile={setFile} validRegexString="image//*" icon />
       ) : (
         // added file layout
         <FilePreview file={file} setFile={setFile} />

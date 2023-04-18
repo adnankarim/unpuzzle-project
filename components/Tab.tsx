@@ -34,7 +34,7 @@ const Tab: FC<tabProps> = ({
       textColor={`${isActive ? onActiveTextColor : textColor}`}
       px={px}
       py={py}
-      className={`box-border ${borderWidth}  ${
+      className={`box-border focus:outline-0 ${borderWidth}  ${
         isActive
           ? `${onActiverBorderColor} ${onActiveFontWeight}`
           : `${borderColor} ${onHoverBorderColor} ${onHoverTextColor} ${buttonActiveTextColor} ${buttonActiveBorderColor}`

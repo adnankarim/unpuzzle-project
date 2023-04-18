@@ -1,4 +1,5 @@
-import { ReactNode, ComponentType } from "react";
+import { FC, ReactNode, ComponentType } from "react";
+import { puzzlePieceSvgProps } from "@/components/assets/svg/svgTypes";
 
 export interface toggleSwitchProps {
   selected: boolean;
@@ -68,6 +69,14 @@ export interface dissmissibleContentProps {
 export interface dropZoneProps {
   setFile: React.Dispatch<React.SetStateAction<File | null>>;
   validRegexString: string;
+  label?: string;
+  labelColor?: string;
+  children?: ReactNode;
+  width?: string;
+  height?: string;
+  className?: string;
+  icon?: boolean;
+  borderStyle?: string;
 }
 
 export interface titleInputProps {
@@ -80,4 +89,17 @@ export interface titleInputProps {
 export interface filePreviewProps {
   file: File | null;
   setFile: React.Dispatch<React.SetStateAction<File | null>>;
+}
+
+export type annotationIconType = FC<puzzlePieceSvgProps>;
+
+export interface puzzlePieceIconPreviewProps {
+  type: string;
+  videoIcon?: annotationIconType;
+  audioIcon?: annotationIconType;
+  imageIcon?: annotationIconType;
+  guideIcon?: annotationIconType;
+  mcqIcon?: annotationIconType;
+  showLabel?: boolean;
+  iconColor?: string;
 }

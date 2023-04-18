@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useRef, useEffect } from "react";
 import Tab from "../../../Tab";
 import TabPanel from "../../../TabPanel";
 import PuzzlePiecesContent from "./PuzzlePiecesContent";
@@ -9,6 +9,13 @@ import { tabsData } from "../Data";
 
 const ContentTabs: FC = () => {
   let [activeTab, setActiveTab] = useState<number>(1);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollRef.current &&
+      console.log(getComputedStyle(scrollRef.current).height);
+  }, []);
   return (
     <div
       className="flex flex-col gap-y-5
@@ -26,7 +33,10 @@ const ContentTabs: FC = () => {
           );
         })}
       </div>
-      <div className="flex justify-start gap-y-[18px] overflow-auto scroll-smooth snap-start">
+      <div
+        ref={scrollRef}
+        className="flex justify-start gap-y-[18px] overflow-y-scroll  scroll-smooth"
+      >
         <TabPanel panelValue={1} activeTab={activeTab}>
           <AllContent />
         </TabPanel>

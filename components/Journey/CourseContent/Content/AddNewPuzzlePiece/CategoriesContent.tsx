@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react";
+import  { useState, FC } from "react";
 import Tab from "../../../../Tab";
 import TabPanel from "../../../../TabPanel";
 import PuzzlePieceSvg from "../../../../assets/svg/PuzzlePieceSvg";
