@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import Image from "next/image";
-import youtubeLogo from "../../assets/youtube-logo.png";
-import iInfo from "../../assets/i-info.png";
-import starRating from "../../assets/star-rating.png";
+import youtubeLogo from "@/components/assets/youtube-logo.png";
+import iInfo from "@/components/assets/i-info.png";
+import starRating from "@/components/assets/star-rating.png";
 
 const PlayerInfo: FC = () => {
   let ratings: React.ReactNode[] = [];

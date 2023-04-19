@@ -1,4 +1,5 @@
 import { NextPage, GetServerSideProps, NextPageContext } from "next";
+
 import Section from "@/components/Section";
 import PuzzleCard from "@/components/Puzzles/PuzzleCard"; 
 
